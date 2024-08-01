@@ -17,18 +17,3 @@ export const initMongoConnection = async () => {
     throw error;
   }
 };
-
-// import mongoose from "mongoose";
-
-// async function initMongoConnection() {
-//   try {
-//     await mongoose.connect(
-//       `mongodb+srv://lida19melnyk:XIuwqVszmJFFKAny@cluster0.t4wqq5l.mongodb.net/`
-//     );
-//     console.log("Mongo connection successfully established!");
-//   } catch (error) {
-//     console.error(error);
-//     throw error;
-//   }
-// }
-// export { initMongoConnection };
