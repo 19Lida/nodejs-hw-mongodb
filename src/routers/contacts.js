@@ -13,9 +13,11 @@ import {
 } from '../db/validation/contact.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { authenticate } from '../middlewares/authenticate.js';
 const router = express.Router();
 
 const jsonParser = express.json();
+router.use(authenticate);
 
 router.get('/', ctrlWrapper(getContactsController));
 

@@ -36,21 +36,24 @@ export const getAllContacts = async ({
   };
 };
 
-export const getContactsById = (contactId) =>
-  ContactsCollection.findById(contactId);
+export const getContactsById = (contactId, userId) =>
+  ContactsCollection.findOne({ _id: contactId, userId });
 
 export const createContact = (payload) => {
   return ContactsCollection.create(payload);
 };
 
-export const updateContact = (contactId, payload) => {
-  return ContactsCollection.findByIdAndUpdate(contactId, payload, {
-    new: true,
-  }); // чи буде повернуто оновлений документ //
+export const updateContact = (contactId, payload, userId) => {
+  return ContactsCollection.findOneAndUpdate(
+    { _id: contactId, userId },
+    payload,
+    { new: true }, // чи буде повернуто оновлений документ //
+  );
 };
 
-export const deleteContact = (contactId) => {
+export const deleteContact = (contactId, userId) => {
   return ContactsCollection.findOneAndDelete({
     _id: contactId,
+    userId,
   });
 };
