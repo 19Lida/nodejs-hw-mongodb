@@ -55,7 +55,7 @@ export const createContactController = async (req, res) => {
 
   res.status(201).json({
     status: 201,
-    message: 'Successfully created a contact for ${req.user.name}!',
+    message: `Successfully created a contact for ${req.user.name}!`,
     data: createdContact,
   });
 };
@@ -73,7 +73,7 @@ export const patchContactController = async (req, res, next) => {
 
   res.status(200).json({
     status: 200,
-    message: 'Successfully updated the contact for ${req.user.name}!',
+    message: `Successfully updated the contact for ${req.user.name}!`,
     data: contact,
   });
 };
