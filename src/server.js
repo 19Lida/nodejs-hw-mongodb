@@ -4,10 +4,10 @@ import pino from 'pino-http';
 import cookieParser from 'cookie-parser';
 import { ENV_VARS } from './constans/index.js';
 import { env } from './utils/env.js';
-// import contactRouter from './routers/contacts.js';
 import router from './routers/index.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { UPLOAD_DIR } from './constans/index.js';
 
 const PORT = Number(env(ENV_VARS.PORT, '3000'));
 export const setupServer = () => {
@@ -22,7 +22,7 @@ export const setupServer = () => {
     }),
   );
   app.use(router);
-
+  app.use('/uploads', express.static(UPLOAD_DIR));
   app.use('*', notFoundHandler);
 
   app.use(errorHandler);
@@ -30,12 +30,4 @@ export const setupServer = () => {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
-  //   app.use('/contacts', contactRouter);
-  //   app.use('*', notFoundHandler);
-
-  //   app.use(errorHandler);
-
-  //   app.listen(PORT, () => {
-  //     console.log(`Server is running on port ${PORT}`);
-  //   });
 };
