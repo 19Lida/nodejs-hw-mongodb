@@ -118,6 +118,7 @@ export const requestResetToken = async (email) => {
     name: user.name,
     link: `${env(SMTP.APP_DOMAIN)}/reset-password?token=${resetToken}`,
   });
+
   try {
     await sendEmail({
       from: env(SMTP.SMTP_FROM),
@@ -131,6 +132,7 @@ export const requestResetToken = async (email) => {
       'Failed to send the email, please try again later',
     );
   }
+  // console.log(html);
 };
 export const resetPassword = async ({ token, password }) => {
   let entries;
