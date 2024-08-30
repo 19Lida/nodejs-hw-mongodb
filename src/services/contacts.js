@@ -49,7 +49,7 @@ export const createContact = (payload) => {
 };
 
 export const updateContact = (contactId, userId, payload) => {
-  console.log(contactId), console.log(payload), console.log(userId);
+  // console.log(contactId), console.log(payload), console.log(userId);
   return ContactsCollection.findOneAndUpdate(
     { _id: contactId, userId },
     payload,
