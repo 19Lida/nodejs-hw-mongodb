@@ -1,0 +1,23 @@
+type: object
+required:
+  - name
+  - email
+  - password
+properties:
+  _id:
+    description: 'Backend-generated unique identifier.'
+    type: string
+    format: objectId
+    example: '66a35382997eac73e992ae30'
+  name:
+    description: 'Username'
+    type: string
+    example: 'John Doe'
+  email:
+    description: 'E-mail address'
+    type: string
+    example: 'John_Doe@gmail.com'
+  password:
+    description: 'Password'
+    type: string
+    example: 'examplepwd12345'

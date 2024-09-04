@@ -15,6 +15,7 @@ import { validateBody } from '../middlewares/validateBody.js';
 import { isValidId } from '../middlewares/isValidId.js';
 import { authenticate } from '../middlewares/authenticate.js';
 import { upload } from '../middlewares/multer.js';
+import { convertBooleans } from '../middlewares/convertBooleans.js';
 const router = express.Router();
 
 const jsonParser = express.json();
@@ -32,6 +33,7 @@ router.post(
   '/',
   jsonParser,
   upload.single('photo'),
+  convertBooleans,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
@@ -41,6 +43,7 @@ router.patch(
   isValidId('contactId'),
   jsonParser,
   upload.single('photo'),
+  convertBooleans,
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );
